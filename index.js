@@ -4,40 +4,61 @@ function Model (data) {
 	else this.data = [];
 };
 
+Model.prototype.push = function (data) {
+	this.data.push(data);
+	this.emit('push', data);
+};
+
 Model.prototype.struct = function (data) {
-	return Object.keys(this.data[0]);
+	var data = Object.keys(this.data[0]);
+	this.emit('struct', data);
+	return data;
 };
 
 Model.prototype.set = function (data) {
 	this.data.push(data);
+	this.emit('set', data);
 };
 
 Model.prototype.get = function (id) {
+	this.emit('get', this.data[id]);
 	return this.data[id];
 };
 
 Model.prototype.pop = function () {
-	return this.data.pop();
+	var data = this.data.pop();
+	this.emit('pop', data);
+	return data
 };
 
 Model.prototype.shift = function () {
-	return this.data.shift();
+	var data = this.data.shift()
+	this.emit('shift', data);
+	return data;
 };
 
 Model.prototype.reverse = function () {
-	return this.data.reverse();
+	var data = this.data.reverse()
+	this.emit('reverse', data);
+	return data;
 };
 
 Model.prototype.size = function () {
-	return this.data.length;
+	var data = this.data.length;
+	this.emit('size', data);
+	return data;
 };
 
 Model.prototype.length = function () {
 	return this.size();
 };
 
-Model.prototype.on = function () {
+Model.prototype.on = function (key, func) {
+	this.events[key] = func;
+};
 
+Model.prototype.emit = function (key, data) {
+	if (this.events[key] !== undefined) this.events[key](data);
 };
 
 module.exports = Model;
