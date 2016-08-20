@@ -1,4 +1,4 @@
-var Model = require('./index.js')
+var Model = require('../index.js')
 
 var clients = new Model();
 
