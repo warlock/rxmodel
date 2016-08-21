@@ -1,12 +1,19 @@
 {
-  "name": "rxmodel",
-  "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
+  "name": "nexo",
+  "version": "0.0.3",
+  "description": "Reactive Models",
+  "main": "nexo.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/warlock/rxmodel.git"
+  },
   "author": "",
-  "license": "ISC"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/warlock/nexo/issues"
+  },
+  "homepage": "https://github.com/warlock/nexo#readme",
 }
